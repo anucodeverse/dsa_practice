@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DigitalAgency</title>
+
+    <!-- IMPORTANT for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0A192F;
+            padding: 10px 40px;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Logo */
+        .logo {
+    height: 45px;
+    width: 120px; /* increase width for rectangular shape */
+    border-radius: 5px; /* small radius for soft corners (use 0 for sharp edges) */
+    overflow: hidden;
+}
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Links */
+        .navlinks {
+            display: flex;
+            gap: 65px;
+        }
+
+        .navlinks a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 10px;
+            transition: 0.3s;
+        }
+
+        .navlinks a:hover {
+            background-color: #1E3A8A;
+            border-radius: 5px;
+        }
+
+        /* Menu icon */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /*  Mobile Design */
+        @media (max-width: 768px) {
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .navlinks {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background-color: #0A192F;
+
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+
+                /* Animation setup */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+            }
+
+            /* When active */
+            .navlinks.active {
+                max-height: 300px;
+                padding: 20px 0;
+            }
+        }
+        
+
+
+       /* Hero Section */
+       .hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 100px;
+    min-height: 90vh;
+    background: #f9fafb;
+    gap: 60px;
+}
+       /* LEFT TEXT CONTAINER */
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            color: #111827;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #6b7280;
+        }
+      .button {
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 12px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            width: fit-content;
+        }
+        .button:hover {
+            background-color: #0A192F;
+            transform: translateY(-2px);
+        }
+        /* IMAGE */
+        .hero-img img {
+            width: 500px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        /*Mobile version of Hero section */
+        @media (max-width: 768px) {
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .hero-text {
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .hero-img img {
+        width: 300px;
+    }
+}
+   
+
+/* About Section */
+.about-section {
+    padding: 100px 10%;
+    background: #f9fafb; /* soft modern background */
+   
+}
+
+/* Section Title */
+.about-section h2 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 60px;
+}
+
+/* Container */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap; /* ensures responsiveness */
+}
+
+/* Image */
+.about-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-img img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1); /* modern soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-img img:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* Text Container */
+.about-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.about-text h3 {
+    font-size: 22px;
+    color: #111827;
+    font-weight: 600;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: #4b5563; /* subtle gray */
+    line-height: 1.8;
+}
+
+/* Button */
+.about-text .button {
+    width: fit-content;
+    background-color: #2563eb;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: 0.3s ease;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.about-text .button:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .about-text h3 {
+        font-size: 20px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+    }
+
+    .about-img img {
+        max-width: 90%;
+    }
+    
+}
+   
+
+    /* Services Section */
+.services-section {
+    padding: 80px 100px;
+    background-color: #f9fafb;
+}
+
+/* Section Title */
+h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+/* Container */
+.service {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Cards */
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 280px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    background-color: #ffffff;
+}
+
+/* Icons */
+.icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+/* Card Title */
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+/* Card Text */
+.card p {
+    font-size: 15px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 40px 20px;
+    }
+
+    .service {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width: 1024px) {
+    .services-section {
+        padding: 60px 40px;
+    }
+}
+/*Contact section*/
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    gap: 20px;
+    padding: 20px 80px;
+    overflow: hidden;
+}
+footer img{
+    width: 20px;
+    height: 20px;
+     transition: 0.3s ease;
+   
+}
+footer img:hover{
+    transform: scale(1.2);
+   
+}
+.footer-icons{
+    display: flex;
+    gap: 15px;
+}
+/*mobile responsive*/
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 20px;
+    }
+}
+
+   
+/* Smooth transition */
+body {
+    transition: 0.3s ease;
+}
+
+/* Dark mode base */
+.dark-mode {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+/* Navbar */
+.dark-mode nav {
+    background-color: #020617;
+}
+
+/* Links */
+.dark-mode a {
+    color: #ffffff;
+}
+
+/* Sections */
+.dark-mode .hero-section,
+.dark-mode .services-section,
+.dark-mode .about-section {
+    background-color: #0f172a;
+    
+}
+.dark-mode p{
+    color: #9ca3af;
+}
+
+/* Cards */
+.dark-mode .card {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+/* Buttons */
+.dark-mode .button {
+    background-color: #3b82f6;
+}
+#dark-mode {
+    background: none;     /* remove white background */
+    border: none;         /* remove border */
+    outline: none;        /* remove focus outline */
+    font-size: 20px;      /* make emoji visible */
+    cursor: pointer;      /* pointer on hover */
+    padding: 5px;         /* small spacing */
+}
+#dark-mode:hover {
+    transform: scale(1.2);
+}
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3 {
+    color: #ffffff;
+}
+.dark-mode .contact-heading {
+    color: black;
+}
+.dark-mode .button:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="proit.png" alt="company-logo">
+        </div>
+
+        <div class="menu-toggle">☰</div>
+
+        <div class="navlinks">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <button id="dark-mode">☀️</button>
+        </div>
+    </nav>
+   <section class="hero-section">
+    <div class="hero-text">
+        <h1>We build Modern Digital Solutions</h1>
+        <p>Helping businesses grow with powerful websites, design and marketing strategies</p>
+        <button class="button">Get Started</button>
+    </div>
+
+    <div class="hero-img">
+        <img src="hero.jpg" alt="laptop-img">
+    </div>
+</section>
+
+<section class="about-section">
+    <h2>About Us</h2>
+    <div class="about-container">
+        <div class="about-img">
+            <img src="about.webp" alt="company-img">
+        </div>
+        <div class="about-text">
+            <h3>Who We Are</h3>
+            <p>Prodesk IT is a digital marketing and web development agency based in Noida, focused on helping businesses grow in the digital world.</p>
+
+            <h3>What We Do</h3>
+            <p>We design and develop modern websites, create user-friendly interfaces, and provide digital marketing solutions.</p>
+
+            <h3>Why Choose Us</h3>
+            <p>We deliver high-quality, result-driven solutions using creativity, technology, and strategy.</p>
+
+            <button class="button">Learn More</button>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+    <h2>Our Services</h2>
+
+    <div class="service">
+        <article class="card">
+            <div class="icon">💻</div>
+            <h3>Web Development</h3>
+            <p>Build modern and responsive websites</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">🎨</div>
+            <h3>UI/UX Design</h3>
+            <p>Design clean and user-friendly interfaces</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">📈</div>
+            <h3>Digital Marketing</h3>
+            <p>Grow your business with smart strategies</p>
+        </article>
+    </div>
+</section>
+
+<!--Contact Us-->
+<footer>
+    <div>© 2026 Prodesk IT</div>
+    <div class="footer-icons">
+        <a href="#">
+            <img src="whatsapp.png" alt="whatsapp-img">
+        </a>
+
+        <a href="#">
+            <img src="instagram.png" alt="instagram-img">
+        </a>
+        <a href="#">
+            <img src="linkedin.png" alt="linkdin-img">
+        </a>
+    </div>
+</footer>
+    
+    <script>
+        const menu = document.querySelector(".menu-toggle");
+        const navlinks = document.querySelector(".navlinks");
+
+        menu.addEventListener("click", () => {
+            navlinks.classList.toggle("active");
+        });
+        //new features
+            let button = document.getElementById("dark-mode");
+            let body = document.body;
+            button.addEventListener("click", function () {
+            body.classList.toggle("dark-mode");
+        // Change emoji based on mode
+            if (body.classList.contains("dark-mode")) 
+            {
+                 button.textContent = "🌙"; // light icon in dark mode
+            } 
+            else 
+            {
+                   button.textContent = "☀️"; // dark icon in light mode
+            }
+});
+    </script>
+
+</body>
+</html>
